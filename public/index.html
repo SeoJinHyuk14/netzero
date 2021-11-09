@@ -858,7 +858,7 @@
         <h2 id="e4c3f73c-842c-46d5-8a70-e382b4d66f04" class="">
           [프로젝트 현황]
         </h2>
-		<div class="pie-chart pie-chart3"><span class="center">30%</span></div>
+		<div class="pie-chart pie-chart3"><span class="center" id="percentage">0%</span></div>
         <figure id="015e1a10-0d1a-48a7-bbb7-16df0f96c199" class="image">
           <a href="resources/Untitled%202.png"
             ><img style="width: 368px" src="resources/Untitled%202.png"
@@ -867,7 +867,6 @@
           (공식 → 100 x (<span class="youtube_views">0</span> -440000) / 1000000
           - 440000
         </p>
-		<div class="pie-chart pie-chart3"><span class="center">30%</span></div>
         <ul id="2bdba5f3-0ffe-4573-85a9-9b6e48409a34" class="bulleted-list">
           <li style="list-style-type: disc">
             <strong>프로젝트 시작 시점 조회 수</strong>:
@@ -948,6 +947,7 @@
     }
   </script>
   <script async>
+    var firstViews = 440000
     function fetchYoutubeViews() {
       fetch(
         "https://socialcounts.in/api/counter/youtube-video-live-view-count/0a7y1DEuASM",
@@ -961,15 +961,17 @@
           Array.prototype.forEach.call(elements, function (element) {
             element.innerText = data.est_sub;
           });
+          
+          var resultPercentage = Math.floor(100 * (data.est_sub - firstViews) / (1000000 - firstViews) * 100) / 100;
+          
+          initDraw(resultPercentage)
+          document.getElementById("percentage").innerText = resultPercentage + "%"
         });
     }
-
-    fetchYoutubeViews();
-  </script>
-  <script async>
-    $(window).ready(function () {
-      draw(30, ".pie-chart3", "#FFDAB9");
-    });
+    
+    function initDraw(percentage) {
+      draw(percentage, ".pie-chart3", "#FFDAB9");
+    }
 
     function draw(max, classname, colorname) {
       var i = 1;
@@ -985,14 +987,16 @@
     function color1(i, classname, colorname) {
       $(classname).css({
         background:
-          "conic-gradient(" +
-          colorname +
-          " 0% " +
-          i +
-          "%, #ffffff " +
-          i +
-          "% 100%)",
+                "conic-gradient(" +
+                colorname +
+                " 0% " +
+                i +
+                "%, #ffffff " +
+                i +
+                "% 100%)",
       });
     }
+    
+    fetchYoutubeViews();
   </script>
 </html>
