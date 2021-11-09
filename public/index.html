@@ -1,0 +1,911 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>[붉은 지구] 다큐 알리기 프로젝트</title>
+	<style>
+		/* cspell:disable-file */
+		/* webkit printing magic: print all background colors */
+		html {
+			-webkit-print-color-adjust: exact;
+		}
+
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		@media only screen {
+			body {
+				margin: 2em auto;
+				max-width: 900px;
+				color: rgb(55, 53, 47);
+			}
+		}
+
+		body {
+			line-height: 1.5;
+			white-space: pre-wrap;
+		}
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		}
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 3px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li > ol:first-child,
+		li > ul:first-child {
+			margin-block-start: 0.6em;
+		}
+
+		ul > li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			text-indent: -1.7em;
+		}
+
+		ul.to-do-list > li {
+			list-style: none;
+		}
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle > li {
+			list-style: none;
+		}
+
+		ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul > li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol > li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol > li {
+			text-indent: -0.4em;
+		}
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle > li > details {
+			padding-left: 1.7em;
+		}
+
+		.toggle > li > details > summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		.simple-table {
+			margin-top: 1em;
+			font-size: 0.875rem;
+		}
+
+		.simple-table-header {
+			background: rgb(247, 246, 243);
+			color: black;
+			font-weight: 500;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-block;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p > .user {
+			opacity: 0.5;
+		}
+
+		td > .user,
+		td > time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code > code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1.25em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans {
+			font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.code {
+			font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+		}
+
+		.serif {
+			font-family: Lyon-Text, Georgia, ui-serif, serif;
+		}
+
+		.mono {
+			font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+		}
+
+		.pdf .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+		}
+
+		.pdf .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.pdf .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+		}
+
+		.pdf .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.highlight-default {
+			color: rgba(55, 53, 47, 1);
+		}
+
+		.highlight-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(145, 145, 142, 1);
+		}
+
+		.highlight-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(187, 132, 108, 1);
+		}
+
+		.highlight-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(215, 129, 58, 1);
+		}
+
+		.highlight-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 148, 51, 1);
+		}
+
+		.highlight-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(108, 155, 125, 1);
+		}
+
+		.highlight-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(91, 151, 189, 1);
+		}
+
+		.highlight-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(167, 130, 195, 1);
+		}
+
+		.highlight-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(205, 116, 159, 1);
+		}
+
+		.highlight-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(225, 111, 100, 1);
+		}
+
+		.highlight-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.highlight-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.highlight-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.highlight-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.highlight-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.highlight-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.highlight-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.highlight-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.highlight-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(145, 145, 142, 1);
+		}
+
+		.block-color-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(187, 132, 108, 1);
+		}
+
+		.block-color-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(215, 129, 58, 1);
+		}
+
+		.block-color-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 148, 51, 1);
+		}
+
+		.block-color-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(108, 155, 125, 1);
+		}
+
+		.block-color-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(91, 151, 189, 1);
+		}
+
+		.block-color-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(167, 130, 195, 1);
+		}
+
+		.block-color-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(205, 116, 159, 1);
+		}
+
+		.block-color-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(225, 111, 100, 1);
+		}
+
+		.block-color-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.block-color-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.block-color-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.block-color-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.block-color-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.block-color-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.block-color-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.block-color-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.block-color-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.select-value-color-pink {
+			background-color: rgba(245, 224, 233, 1);
+		}
+
+		.select-value-color-purple {
+			background-color: rgba(232, 222, 238, 1);
+		}
+
+		.select-value-color-green {
+			background-color: rgba(219, 237, 219, 1);
+		}
+
+		.select-value-color-gray {
+			background-color: rgba(227, 226, 224, 1);
+		}
+
+		.select-value-color-orange {
+			background-color: rgba(250, 222, 201, 1);
+		}
+
+		.select-value-color-brown {
+			background-color: rgba(238, 224, 218, 1);
+		}
+
+		.select-value-color-red {
+			background-color: rgba(255, 226, 221, 1);
+		}
+
+		.select-value-color-yellow {
+			background-color: rgba(253, 236, 200, 1);
+		}
+
+		.select-value-color-blue {
+			background-color: rgba(211, 229, 239, 1);
+		}
+
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+
+		.checkbox-on {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.checkbox-off {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+	</style>
+</head>
+<body>
+<article id="9bf48034-3937-4e76-aa26-db0165c137b5" class="page sans">
+	<header>
+		<div class="page-header-icon undefined"><span class="icon">🟥</span></div>
+		<h1 class="page-title">[붉은 지구] 다큐 알리기 프로젝트</h1></header>
+	<div class="page-body"><p id="183f93d1-0823-4c94-89d9-5b3ada74d4c7" class="">
+	</p>
+		<h3 id="887dabcd-2f3a-4670-9a33-df4f1ca5e4a3" class="">[프로젝트 소개]</h3>
+		<p id="eaff51fe-7720-4586-92e9-16ff9f92fe25" class="">안녕하세요!</p>
+		<p id="6388a2c4-1930-4959-93eb-a60e31f779da" class="">저희는 남해 넷제로톤에 참여한 [🌎푸른 지구]팀👨‍👨‍👦‍👦 입니다!</p>
+		<figure id="8ffec771-23c0-496a-9bef-084cce029451" class="image"><a href="resources/Untitled.png"><img style="width:640px"
+																											  src="resources/Untitled.png"/></a>
+		</figure>
+		<p id="b823f9a6-e5c1-4519-9780-e8d2eccdd4c8" class=""> [샌프란시스코 2020년 8월 화재 당시 붉게 불들어 버린 하늘]</p>
+		<p id="7fe3b2fa-ec0e-4e8d-8683-660637fcc348" class="">넷제로톤은 탄소배출을 청년들이 남해에 모여서 탄소배출을 줄 일 수 있는 방안을 같이 탐색하고 제안 혹은 행동하는 프로젝트입니다. 저희는 프로젝트 일정 중
+			하나가 [붉은 지구] 시리즈를 시청하는 일이었습니다. 저희는 첫 편인 불타는 지구를 보고 난 후의 충격을 잊을 수가 없었습니다. 저희가 생각하는 것보다 많은 이상 기후가 발생하고 많은 사람들이 그로 인한 피해를 경험하고 있었습니다. 그래서 저희는
+			일주일 동안 저희가 거창한 일은 할 수 없지만 정말 잘 만든 이 영상을 알리기로 결심 하였고, 이 프로젝트가 탄생하게 됐습니다. 많은 분들이 이 영상을 통해서 현재 상황을 보다 잘 이해하고, 함께 탄소를 줄여나갔으면 합니다!
+
+			<strong>그래서 저희 팀의 프로젝트는 [붉은 지구] 다큐 조회수 100만 만들기 입니다! </strong></p>
+		<p id="f5dd2268-21ba-4405-b3c0-0388fce42778" class="">
+		</p>
+		<h3 id="95ea8c3b-670d-4168-8b0f-e5158f2dc303" class="">[붉은 지구 다큐 소개]</h3>
+		<figure id="cdf115ca-94c8-45c0-93bb-c772b0acac4e">
+			<div class="source"><a href="https://www.youtube.com/watch?v=0a7y1DEuASM">https://www.youtube.com/watch?v=0a7y1DEuASM</a></div>
+		</figure>
+		<p id="90484d3e-c062-4517-9d44-148598bcd0dc" class="">[youtube 임베딩 자리]</p>
+		<p id="8cd9d764-c43f-46ee-b8ef-37b39080071b" class="">[<strong>붉은 지구 소개</strong>]</p>
+		<p id="5e2524c3-dd85-4b78-a3c0-250990a940cf" class="">[기후변화 특별기획 4부작 1부 ‘붉은 지구’ - 엔드 게임 1.5℃] 인류의 완벽한 행성 지구의 기후가 변하고 있다. 그것도 아주 무서운 속도로. 최근 전
+			세계를 휩쓸고 있는 폭염과 가뭄, 초대형 산불은 바로 지구가 보내는 기후변화의 시그널이다. 기후 위기에 직면한 우리 인류에게 질문을 던진다. 기후는 왜, 얼마나 변하고 있는가, 기후변화는 앞으로의 세상을 어떻게 바꾸게 될까.</p>
+		<p id="5fbc06ec-0ef9-4dc8-aad9-41cd22c1ba13" class="">
+		</p>
+		<p id="7902b3b0-d816-49a1-b7de-9d726c69550a" class=""><strong>[나레이션을 맡은 여진구님의 붉은 지구 소개사]</strong></p>
+		<figure id="a97d8f28-4313-4ddb-a6da-f63de5d351a6" class="image"><a href="resources/Untitled%201.png"><img style="width:986px"
+																												  src="resources/Untitled%201.png"/></a>
+		</figure>
+		<p id="508afe71-cade-4350-be1f-bd3f655ff3c3" class="">[출처: 여진구님 인스타그램, 좋은 일로 퍼왔으니 봐주시는걸로 🙏🏻)</p>
+		<p id="3aac1721-bb41-46a4-a9ca-582b74f7c82c" class="">
+		</p>
+		<h2 id="e4c3f73c-842c-46d5-8a70-e382b4d66f04" class="">[프로젝트 현황]</h2>
+		<p id="8fb11285-2e3e-4c10-8cf9-b5e50fc67ded" class="">
+		</p>
+		<figure id="015e1a10-0d1a-48a7-bbb7-16df0f96c199" class="image"><a href="resources/Untitled%202.png"><img style="width:368px"
+																												  src="resources/Untitled%202.png"/></a>
+		</figure>
+		<p id="78fa3df0-3ca6-4cd1-a30e-9e5264d70614" class="">
+		</p>
+		<p id="d418fb8c-b0c2-410b-8a33-f976c85a3cd0" class="">(공식 → 100 x (<span class="youtube_views">0</span> -440000) / 1000000 - 440000</p>
+		<ul id="2bdba5f3-0ffe-4573-85a9-9b6e48409a34" class="bulleted-list">
+			<li style="list-style-type:disc"><strong>프로젝트 시작 시점 조회 수</strong>: <strong>44만회 (2021년 11월 9일 현재 붉은 지구 1편 조회 수)</strong></li>
+		</ul>
+		<ul id="ded8d4ed-2773-43e9-8e0c-05d85cfd5491" class="bulleted-list">
+			<li style="list-style-type:disc"><strong>현재 조회 수</strong>: <span class="youtube_views">0</span> 회(API로 가져와야함)</li>
+		</ul>
+		<ul id="a5432131-0711-414e-9cce-4792861bce6e" class="bulleted-list">
+			<li style="list-style-type:disc"><strong>목표 조회 </strong>: <strong>100만회 (+56만회를 높이자!(2021년 12월 31일 까지 100만회)</strong></li>
+		</ul>
+		<p id="c933861a-81e0-4c6a-b016-d580c3fc2d85" class="">
+		</p>
+		<h2 id="094ec23e-dd10-4188-b12c-1e3dbf8c5fe8" class="">프로젝트 공유 하기(=지구 살리기)</h2>
+		<button onclick="shareFacebook()">페이스북 공유하기</button>
+		<button onclick="shareTwitter()">트위터 공유하기</button>
+		<button onclick="shareLine()">라인 공유하기</button>
+		<button onclick="shareNaver()">네이버 블로그 공유하기</button>
+		<button id="kakaotalk">카카오톡 공유하기</button>
+		</div>
+</article>
+</body>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+	var sendUrl = "netzero-1eda7.web.app/"
+	Kakao.init('cc543ed7d9a114d7b445dcdb62e74293');
+	Kakao.Link.createDefaultButton({
+		container: '#kakaotalk',
+		objectType: 'feed',
+		content: {
+			title: "Net-Zero",
+			description: "Net-Zero 공유하기",
+			imageUrl: sendUrl,
+			link: {
+				mobileWebUrl: sendUrl,
+				webUrl: sendUrl
+			}
+		}
+	});
+
+	function shareTwitter() {
+		var sendText = "Net-Zero";
+		window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+	}
+
+	function shareFacebook() {
+		window.open("http://www.facebook.com/sharer/sharer.php?u=https://" + sendUrl);
+	}
+
+	function shareLine() {
+		var title = "Net-Zero"
+		var summary = "붉은 지구 시청하기!"
+		var br = "\n"
+		window.open("http://line.me/R/msg/text/?" + title + br + summary + sendUrl);
+	}
+
+	function shareNaver() {
+		var title = "Net-Zero"
+		window.open("http://blog.naver.com/openapi/share?title=" + title + "&url=" + sendUrl);
+	}
+	
+	
+</script>
+<script async>
+	function fetchYoutubeViews() {
+		fetch("https://socialcounts.in/api/counter/youtube-video-live-view-count/0a7y1DEuASM", { mode: 'cors' })
+			.then(function(response) {
+				return response.json();
+			}).then(function(data){
+			var elements = document.getElementsByClassName('youtube_views');
+			Array.prototype.forEach.call(elements, function(element) {
+				element.innerText = data.est_sub;
+			});
+		});
+	}
+
+	fetchYoutubeViews();
+</script>
+</html>
