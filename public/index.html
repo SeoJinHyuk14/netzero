@@ -6,8 +6,31 @@
       integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>[붉은 지구] 다큐 알리기 프로젝트</title>
     <style>
+      .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 50px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+      }
+
+      .fa:hover {
+          opacity: 0.7;
+      }
+
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+
+      .fa-twitter {
+        background: #55ACEE;
+        color: white;
+      }
       /* cspell:disable-file */
       /* webkit printing magic: print all background colors */
       html {
@@ -819,9 +842,9 @@
           </strong>
         </p>
         <p id="f5dd2268-21ba-4405-b3c0-0388fce42778" class=""></p>
-        <h3 id="95ea8c3b-670d-4168-8b0f-e5158f2dc303" class="">
+        <h2 id="95ea8c3b-670d-4168-8b0f-e5158f2dc303" class="">
           [붉은 지구 다큐 소개]
-        </h3>
+        </h2>
         <figure id="cdf115ca-94c8-45c0-93bb-c772b0acac4e">
           <div class="source">
             <iframe width="750" height="422" src="https://www.youtube.com/embed/0a7y1DEuASM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -880,11 +903,19 @@
         <h2 id="094ec23e-dd10-4188-b12c-1e3dbf8c5fe8" class="">
           프로젝트 공유 하기(=지구 살리기)
         </h2>
-        <button onclick="shareFacebook()">페이스북 공유하기</button>
-        <button onclick="shareTwitter()">트위터 공유하기</button>
-        <button onclick="shareLine()">라인 공유하기</button>
-        <button onclick="shareNaver()">네이버 블로그 공유하기</button>
-        <button id="kakaotalk">카카오톡 공유하기</button>
+
+        <div style="display: flex; margin-top: 30px; flex-direction: row; justify-content: center; align-items: center;">
+        <button onclick="shareFacebook()" class="fa fa-facebook"  style="margin-right: 15px; width: 100px; height: 100px"></button>
+        <button onclick="shareTwitter()" class="fa fa-twitter" style="margin-right: 15px; width: 100px; height: 100px"></button>
+<!--         <button onclick="shareLine()">라인 공유하기</button>-->
+<!--        <button onclick="shareNaver()">네이버 블로그 공유하기</button>-->
+<!--        <button id="kakaotalk" style="width: 100px; height: 100px">-->
+<!--          <img src=resources/kakao.png style="width: 100%; height: 100%">-->
+<!--        </button>-->
+          <div id="kakaotalk" style="width: 100px; height: 100px; cursor: pointer; border-radius: 100px; display:flex; justify-content: center; align-items: center; background-color: rgb(255,250,0);">
+          <svg width="70" height="70" viewBox="0 0 22 21" fill="yellow" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0009 0.916992C5.20089 0.916992 0.5 4.46552 0.5 8.84859C0.5 11.5738 2.31839 13.9754 5.08712 15.4004L3.92035 19.5621C3.89856 19.6444 3.90307 19.7311 3.93328 19.8108C3.96349 19.8905 4.01799 19.9593 4.08945 20.008C4.16091 20.0568 4.24594 20.0832 4.33321 20.0837C4.42048 20.0841 4.50583 20.0586 4.57783 20.0106L9.68477 16.7177C10.1153 16.7574 10.5534 16.7801 10.9991 16.7801C16.7985 16.7801 21.5 13.2317 21.5 8.84859C21.5 4.46552 16.7985 0.916992 10.9991 0.916992" fill="#191919"/>
+        </div>
       </div>
     </article>
   </body>
