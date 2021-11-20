@@ -971,8 +971,7 @@
     var firstViews = 440000
     function fetchYoutubeViews() {
       fetch(
-        "https://socialcounts.in/api/counter/youtube-video-live-view-count/0a7y1DEuASM",
-        { mode: "cors" }
+        "https://rgodtct99k.execute-api.ap-northeast-2.amazonaws.com/production"
       )
         .then(function (response) {
           return response.json();
@@ -980,10 +979,11 @@
         .then(function (data) {
           var elements = document.getElementsByClassName("youtube_views");
           Array.prototype.forEach.call(elements, function (element) {
-            element.innerText = data.est_sub;
+            console.log(data)
+            element.innerText = data.viewCount;
           });
           
-          var resultPercentage = Math.floor(100 * (data.est_sub - firstViews) / (1000000 - firstViews) * 100) / 100;
+          var resultPercentage = Math.floor(100 * (data.viewCount - firstViews) / (1000000 - firstViews) * 100) / 100;
           
           initDraw(resultPercentage)
           document.getElementById("percentage").innerText = resultPercentage + "%"
