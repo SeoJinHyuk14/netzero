@@ -67,3 +67,6 @@ node_modules/
 .DS_Store
 
 .idea
+
+backend/zappa_settings.json
+venv
